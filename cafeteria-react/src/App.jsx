@@ -14,7 +14,7 @@ function App() {
   const [cantidad, setCantidad] = useState(1);
   const [fecha, setFecha] = useState(new Date().toISOString().split('T')[0]);
 
-  // Función para cargar los datos desde la API de Render
+  // Cargar datos desde el backend en Render
   const cargarDatos = async () => {
     setCargando(true);
     try {
@@ -24,7 +24,6 @@ function App() {
         api.get('/ventas')
       ]);
 
-      // Validamos que cada respuesta sea un arreglo antes de guardarlo en el estado
       setEstudiantes(Array.isArray(resEst.data) ? resEst.data : []);
       setProductos(Array.isArray(resProd.data) ? resProd.data : []);
       setVentas(Array.isArray(resVen.data) ? resVen.data : []);
@@ -42,7 +41,7 @@ function App() {
     cargarDatos();
   }, []);
 
-  // Registrar una nueva venta
+  // Registrar nueva venta
   const registrarVenta = async (e) => {
     e.preventDefault();
     if (!estudianteId || !productoId || cantidad <= 0) {
@@ -150,7 +149,7 @@ function App() {
           <tbody>
             {cargando ? (
               <tr>
-                <td colSpan="8" style={{ textAlign: 'center' }}>Cargando datos desde el servidor... (si el servidor de Render está suspendido, puede tardar unos 30 segundos en responder)</td>
+                <td colSpan="8" style={{ textAlign: 'center' }}>Cargando datos desde el servidor...</td>
               </tr>
             ) : ventas.length === 0 ? (
               <tr>

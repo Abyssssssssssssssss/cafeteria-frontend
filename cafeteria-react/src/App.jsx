@@ -6,6 +6,7 @@ function App() {
   const [estudiantes, setEstudiantes] = useState([]);
   const [productos, setProductos] = useState([]);
   const [ventas, setVentas] = useState([]);
+  const [cargando, setCargando] = useState(true);
 
   // Formulario para registrar venta
   const [estudianteId, setEstudianteId] = useState('');
@@ -15,6 +16,7 @@ function App() {
 
   // Función para cargar los datos desde la API de Render
   const cargarDatos = async () => {
+    setCargando(true);
     try {
       const [resEst, resProd, resVen] = await Promise.all([
         api.get('/estudiantes'),
@@ -31,6 +33,8 @@ function App() {
       setEstudiantes([]);
       setProductos([]);
       setVentas([]);
+    } finally {
+      setCargando(false);
     }
   };
 
@@ -58,7 +62,7 @@ function App() {
       setCantidad(1);
     } catch (error) {
       console.error('Error al registrar venta:', error);
-      alert('Error al registrar la venta');
+      alert('Error al registrar la venta. Verifica la conexión con el servidor.');
     }
   };
 
@@ -70,6 +74,7 @@ function App() {
       cargarDatos();
     } catch (error) {
       console.error('Error al eliminar venta:', error);
+      alert('Error al eliminar la venta.');
     }
   };
 
@@ -143,9 +148,13 @@ function App() {
             </tr>
           </thead>
           <tbody>
-            {ventas.length === 0 ? (
+            {cargando ? (
               <tr>
-                <td colSpan="8" style={{ textAlign: 'center' }}>No hay ventas registradas o cargando datos...</td>
+                <td colSpan="8" style={{ textAlign: 'center' }}>Cargando datos desde el servidor... (si el servidor de Render está suspendido, puede tardar unos 30 segundos en responder)</td>
+              </tr>
+            ) : ventas.length === 0 ? (
+              <tr>
+                <td colSpan="8" style={{ textAlign: 'center' }}>No hay ventas registradas.</td>
               </tr>
             ) : (
               ventas.map((v) => (

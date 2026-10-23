@@ -1,146 +1,211 @@
-/* src/App.css */
+/* ==========================================
+   PALETA ESTÉTICA: MORADO, ROJO Y NEGRO (Elegante y Suave)
+   ================================---------- */
 :root {
-  --bg-color: #0f172a;
-  --card-bg: #1e293b;
-  --accent-color: #38bdf8;
-  --border-color: #334155;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --danger-color: #f43f5e;
+  --bg-color: #080509;            /* Negro profundo aterciopelado */
+  --card-bg: #130b17;             /* Morado negruzco muy sutil y suave */
+  --card-border: #2c1633;         /* Borde morado oscuro delicado */
+  --accent-purple: #b57edd;       /* Morado pastel elegante / principal */
+  --accent-purple-hover: #c99ee6; /* Morado claro al pasar el mouse */
+  --accent-red: #e63946;          /* Rojo carmesí suave y refinado */
+  --accent-red-hover: #ff4d5a;    /* Rojo brillante para alertas/eliminar */
+  --text-primary: #f3ecf7;        /* Blanco perla / lavanda muy suave */
+  --text-secondary: #a99bb8;      /* Gris violáceo para textos secundarios */
+  --input-bg: #0d0710;            /* Fondo profundo para campos de texto */
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-primary);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   margin: 0;
   padding: 0;
+  letter-spacing: 0.3px;
 }
 
 .container {
-  max-width: 900px;
-  margin: 40px auto;
+  max-width: 950px;
+  margin: 50px auto;
   padding: 0 20px;
 }
 
 h1 {
   text-align: center;
-  font-size: 2.2rem;
-  margin-bottom: 30px;
-  color: var(--accent-color);
-  letter-spacing: 1px;
+  font-size: 2.4rem;
+  margin-bottom: 35px;
+  color: var(--accent-purple);
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-shadow: 0 2px 20px rgba(181, 126, 221, 0.15);
 }
 
 .card {
   background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 24px;
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 28px;
   margin-bottom: 30px;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 30px -10px rgba(8, 5, 9, 0.7);
+  transition: border-color 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(181, 126, 221, 0.3);
 }
 
 .card h2 {
   margin-top: 0;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   color: var(--text-primary);
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 12px;
-  margin-bottom: 20px;
+  border-bottom: 1px solid var(--card-border);
+  padding-bottom: 14px;
+  margin-bottom: 22px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
 .form-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 18px;
   align-items: end;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .form-group label {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--text-secondary);
-  font-weight: 600;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
 }
 
 input, select {
-  background-color: #0f172a;
-  border: 1px solid var(--border-color);
+  background-color: var(--input-bg);
+  border: 1px solid var(--card-border);
   color: var(--text-primary);
-  padding: 10px 12px;
-  border-radius: 6px;
+  padding: 12px 14px;
+  border-radius: 8px;
   font-size: 0.95rem;
   outline: none;
-  transition: border-color 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 input:focus, select:focus {
-  border-color: var(--accent-color);
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 0 3px rgba(181, 126, 221, 0.1);
 }
 
+/* Botón principal (Morado elegante) */
 .btn-primary {
-  background-color: var(--accent-color);
-  color: #0f172a;
+  background-color: var(--accent-purple);
+  color: var(--bg-color);
   font-weight: 700;
   border: none;
-  padding: 11px 18px;
-  border-radius: 6px;
+  padding: 12px 20px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.1s ease, filter 0.2s ease;
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
 }
 
 .btn-primary:hover {
-  filter: brightness(1.1);
+  background-color: var(--accent-purple-hover);
   transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(181, 126, 221, 0.3);
+}
+
+/* Botón secundario / Cancelar */
+button[type="button"] {
+  background-color: #1c1224;
+  color: var(--text-secondary);
+  border: 1px solid var(--card-border);
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+button[type="button"]:hover {
+  background-color: #261833;
+  color: var(--text-primary);
 }
 
 .table-responsive {
   overflow-x: auto;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
   background-color: var(--card-bg);
-  border-radius: 8px;
-  overflow: hidden;
 }
 
 th, td {
-  padding: 14px 16px;
+  padding: 15px 18px;
   text-align: left;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--card-border);
 }
 
 th {
-  background-color: #0f172a;
+  background-color: #0b070e;
   color: var(--text-secondary);
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  font-weight: 600;
 }
 
 tr:last-child td {
   border-bottom: none;
 }
 
+tr:hover td {
+  background-color: rgba(181, 126, 221, 0.02);
+}
+
+/* Botones de acción en tabla */
 .btn-delete {
   background: transparent;
-  color: var(--danger-color);
-  border: 1px solid var(--danger-color);
-  padding: 6px 12px;
-  border-radius: 4px;
+  color: var(--accent-red);
+  border: 1px solid rgba(230, 57, 70, 0.3);
+  padding: 7px 14px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 600;
   transition: all 0.2s ease;
 }
 
 .btn-delete:hover {
-  background-color: var(--danger-color);
+  background-color: var(--accent-red);
   color: #fff;
+  border-color: var(--accent-red);
+  box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+}
+
+/* Botón Editar dentro de la tabla */
+table button:not(.btn-delete) {
+  background-color: rgba(181, 126, 221, 0.15) !important;
+  color: var(--accent-purple) !important;
+  border: 1px solid rgba(181, 126, 221, 0.3) !important;
+  padding: 7px 14px !important;
+  border-radius: 6px !important;
+  cursor: pointer;
+  font-weight: 600 !important;
+  font-size: 0.82rem !important;
+  transition: all 0.2s ease !important;
+}
+
+table button:not(.btn-delete):hover {
+  background-color: var(--accent-purple) !important;
+  color: var(--bg-color) !important;
 }
